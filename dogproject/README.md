@@ -10,6 +10,7 @@ Breed prediction with highest confidence
 ### predOneConf
 Breed prediction confidence
 
+
 ## Functions
 ### initState()
 Function used to initialize the Home Page state. This function also calls `loadTfliteModel`.
@@ -28,3 +29,5 @@ Function used to pass the user's input image to the trained model. This function
 
 ### resetVar()
 Function used to reset variables to get ready for another input if the user so chooses.
+
+## User Interface Drawings
