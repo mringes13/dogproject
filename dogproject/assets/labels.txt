@@ -1,0 +1,10 @@
+0 Beagle
+1 Bernese Mountain Dog
+2 Border Collie
+3 Boston Terrier
+4 Chihuahua
+5 Cocker Spaniel
+6 Dalmation
+7 Pomeranian
+8 Tibetan Mastiff
+9 Yorkshire terrier
