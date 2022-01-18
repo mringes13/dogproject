@@ -19,7 +19,7 @@ Select one of the bottom icons (camera or gallery) to choose an image.
 Once an image has been selected, the application will run the chosen image through the trained model and output the dog breed with the highest confidence.
 
 ## Screenshots
-1. Application Screen
+1. Application Home Screen
 <img src='https://user-images.githubusercontent.com/60116121/150008348-c4eb4dfd-93cb-426c-a965-31a9e3fa12bf.PNG' width='300'>
 
 2. Output Results
