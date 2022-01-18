@@ -1,10 +1,14 @@
 # Dog Project
 
 ## Variables
-### image -> User input image
-### imagePicker -> Image Picker object
-### predOne -> Breed prediction with highest confidence
-### predOneConf -> Breed prediction confidence
+### image
+User input image
+### imagePicker
+Image Picker object
+### predOne
+Breed prediction with highest confidence
+### predOneConf
+Breed prediction confidence
 
 ## Functions
 ### initState()
