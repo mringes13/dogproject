@@ -39,8 +39,6 @@ class _MyHomePageState extends State<MyHomePage> {
   File? _image;
   String _predOne = "";
   double _predOneConf = 0.0;
-  String _predTwo = "";
-  double _predTwoConf = 0.0;
 
   final imagePicker = ImagePicker();
 
