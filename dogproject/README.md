@@ -31,3 +31,4 @@ Function used to reset variables to get ready for another input if the user so c
 
 
 ## User Interface Drawings
+<img width="216" alt="Screen Shot 2022-01-18 at 3 19 04 PM" src="https://user-images.githubusercontent.com/60116121/150012289-0f2ce7fb-25db-4f35-9d7a-1aeb8b992c24.png">
