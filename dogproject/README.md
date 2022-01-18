@@ -9,7 +9,7 @@ Image Picker object
 Breed prediction with highest confidence
 ### predOneConf
 Breed prediction confidence
-
+<br>
 
 ## Functions
 ### initState()
@@ -30,4 +30,5 @@ Function used to pass the user's input image to the trained model. This function
 ### resetVar()
 Function used to reset variables to get ready for another input if the user so chooses.
 
+<br>
 ## User Interface Drawings
