@@ -1,6 +1,8 @@
 ## Dog Project
 Dog Project is a simple application that utilizes a trained model to determine the breed of a dog most confidently. This project utilizes images from user input, whether it be from the photo gallery or the camera.
 
+This project uses Flutter, Dart, XCode, & Google's Teachable Machine.
+
 ## How to Run
 
 ### Step 1: Clone Git Repository
