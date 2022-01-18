@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Dog Breed Identification',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.blueGrey,
       ),
       home: MyHomePage(),
     );
@@ -36,6 +36,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   File? _image;
   String _predOne = "";
+  double _predOneConf = 0.0;
+  String _predTwo = "";
+  double _predTwoConf = 0.0;
+
   final imagePicker = ImagePicker();
 
   @override
@@ -71,13 +75,15 @@ class _MyHomePageState extends State<MyHomePage> {
         imageMean: 0.0, // defaults to 117.0
         imageStd: 255.0, // defaults to 1.0
         numResults: 2, // defaults to 5
-        threshold: 0.2, // defaults to 0.1
+        threshold: 0.0, // defaults to 0.1
         asynch: true // defaults to true
         );
     setState(() {
       _image = File(image.path);
       if (recognitions != null) {
+        print(recognitions);
         _predOne = recognitions[0]['label'];
+        _predOneConf = recognitions[0]['confidence'] * 100;
       } else {
         _predOne = "Could not recognize within threshold!";
       }
@@ -88,61 +94,137 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _image = null;
       _predOne = "";
+      _predOneConf = 0.0;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: _image == null
-            ? Image.asset("images/dogicon.png")
-            : Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                        width: 300, height: 300, child: Image.file(_image!)),
-                    Text(_predOne),
-                  ],
-                ),
-              ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          _image == null
-              ? Row(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.all(10),
-                      child: FloatingActionButton(
-                        backgroundColor: Colors.black,
-                        child: Icon(Icons.add_photo_alternate_rounded),
-                        onPressed: getImageFromGallery,
+    return Stack(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              colorFilter: ColorFilter.mode(
+                  Colors.black.withOpacity(0.2), BlendMode.dstATop),
+              image: AssetImage("images/ppbg.jpg"),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        Scaffold(
+          backgroundColor: Colors.transparent,
+          extendBodyBehindAppBar: true,
+          // appBar: AppBar(
+          //   title: Text("Dog Breed Identification"),
+          //   elevation: 5,
+          // ),
+          body: Center(
+            child: _image == null
+                ? Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.all(30),
+                        child: Text("Let us determine your dog's breed!",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.white,
+                            )),
                       ),
+                      Image.asset("images/dogicon.png"),
+                      Container(
+                        margin: EdgeInsets.all(30),
+                        child: const Text(
+                          "Select an image using the icons below!",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.white,
+                            //backgroundColor: Colors.white,
+                          ),
+                        ),
+                      )
+                    ],
+                  )
+                : Container(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          margin: EdgeInsets.fromLTRB(0, 10, 0, 30),
+                          width: 300,
+                          height: 300,
+                          child: Image.file(_image!),
+                        ),
+                        Container(
+                          margin: EdgeInsets.all(30),
+                          child: Column(
+                            children: [
+                              Text(
+                                "We are ${_predOneConf.toStringAsFixed(2)}% confident that your dog is a:",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 15,
+                                ),
+                              ),
+                              Text(
+                                _predOne.substring(2),
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
-                    Container(
-                      margin: EdgeInsets.all(10),
-                      child: FloatingActionButton(
-                        backgroundColor: Colors.black,
-                        child: Icon(Icons.camera_alt_rounded),
-                        onPressed: getImageFromCamera,
-                      ),
-                    ),
-                  ],
-                )
-              : Container(
-                  margin: EdgeInsets.all(10),
-                  child: FloatingActionButton(
-                    backgroundColor: Colors.black,
-                    child: Icon(Icons.replay),
-                    onPressed: resetVar,
                   ),
-                ),
-        ],
-      ),
+          ),
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerFloat,
+          floatingActionButton: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _image == null
+                  ? Row(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.all(10),
+                          child: FloatingActionButton(
+                            backgroundColor: Colors.black,
+                            child: Icon(Icons.add_photo_alternate_rounded),
+                            onPressed: getImageFromGallery,
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.all(10),
+                          child: FloatingActionButton(
+                            backgroundColor: Colors.black,
+                            child: Icon(Icons.camera_alt_rounded),
+                            onPressed: getImageFromCamera,
+                          ),
+                        ),
+                      ],
+                    )
+                  : Container(
+                      margin: EdgeInsets.all(10),
+                      child: FloatingActionButton(
+                        backgroundColor: Colors.black,
+                        child: Icon(Icons.replay),
+                        onPressed: resetVar,
+                      ),
+                    ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
