@@ -20,10 +20,10 @@ Once an image has been selected, the application will run the chosen image throu
 
 ## Screenshots
 1. Application Screen
-![IMG_9120](https://user-images.githubusercontent.com/60116121/150008348-c4eb4dfd-93cb-426c-a965-31a9e3fa12bf.PNG)
+<img src='https://user-images.githubusercontent.com/60116121/150008348-c4eb4dfd-93cb-426c-a965-31a9e3fa12bf.PNG' width='300'>
 
 2. Output Results
-![IMG_9121](https://user-images.githubusercontent.com/60116121/150008355-1139eee9-41dc-4d38-bf01-0c7b6b9dfbe8.PNG)
+<img src='https://user-images.githubusercontent.com/60116121/150008355-1139eee9-41dc-4d38-bf01-0c7b6b9dfbe8.PNG' width='300'>
 
 
 ## Workflow
