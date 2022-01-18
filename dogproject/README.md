@@ -1,13 +1,13 @@
 # Dog Project
 
 ## Variables
-### image
+#### image
 User input image
-### imagePicker
+#### imagePicker
 Image Picker object
-### predOne
+#### predOne
 Breed prediction with highest confidence
-### predOneConf
+#### predOneConf
 Breed prediction confidence
 <br>
 
@@ -15,20 +15,20 @@ Breed prediction confidence
 ### initState()
 Function used to initialize the Home Page state. This function also calls `loadTfliteModel`.
 
-### loadTfliteModel()
+#### loadTfliteModel()
 Function used to load the asset model. This function utilizes the Tflite plugin.
 
-### getImageFromGallery()
+#### getImageFromGallery()
 Function used to get an image from the user's gallery. This function also calls `getOutputs`.
 
-### getImageFromCamera()
+#### getImageFromCamera()
 Function used to get an image from the user's camera. This function also calls `getOutputs`.
 
-### getOutputs()
+#### getOutputs()
 Function used to pass the user's input image to the trained model. This function also sets the state for variables predOne and predOneConf allowing the user's interface to change according to the output results.
 
-### resetVar()
+#### resetVar()
 Function used to reset variables to get ready for another input if the user so chooses.
 
-<br>
+
 ## User Interface Drawings
