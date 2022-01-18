@@ -16,8 +16,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Dog Breed Identification',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
+        primarySwatch: Colors.pink,
+        primaryColor: Colors.pink.shade600,
       ),
       home: MyHomePage(),
     );
@@ -54,17 +56,14 @@ class _MyHomePageState extends State<MyHomePage> {
       model: "assets/model_unquant.tflite",
       labels: "assets/labels.txt",
     ) as String;
-    print(res);
   }
 
   Future getImageFromGallery() async {
-    print("getting image");
     var imageFile = await ImagePicker().getImage(source: ImageSource.gallery);
     getOutputs(imageFile!);
   }
 
   Future getImageFromCamera() async {
-    print("getting image");
     var imageFile = await ImagePicker().getImage(source: ImageSource.camera);
     getOutputs(imageFile!);
   }
@@ -81,7 +80,6 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _image = File(image.path);
       if (recognitions != null) {
-        print(recognitions);
         _predOne = recognitions[0]['label'];
         _predOneConf = recognitions[0]['confidence'] * 100;
       } else {
@@ -115,10 +113,10 @@ class _MyHomePageState extends State<MyHomePage> {
         Scaffold(
           backgroundColor: Colors.transparent,
           extendBodyBehindAppBar: true,
-          // appBar: AppBar(
-          //   title: Text("Dog Breed Identification"),
-          //   elevation: 5,
-          // ),
+          appBar: AppBar(
+            title: Text("Dog Breed Identification"),
+            elevation: 5,
+          ),
           body: Center(
             child: _image == null
                 ? Column(
