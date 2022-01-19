@@ -27,5 +27,3 @@ Once an image has been selected, the application will run the chosen image throu
 2. Output Results
 <img src='https://user-images.githubusercontent.com/60116121/150008355-1139eee9-41dc-4d38-bf01-0c7b6b9dfbe8.PNG' width='300'>
 
-
-## Workflow
